@@ -9,6 +9,7 @@ import android.graphics.Rect;
 
 import com.skula.paniclab.R;
 import com.skula.paniclab.activities.views.BoardView;
+import com.skula.paniclab.constants.Cnst;
 import com.skula.paniclab.constants.DrawAreas;
 import com.skula.paniclab.constants.PictureLibrary;
 import com.skula.paniclab.models.Point;
@@ -27,22 +28,8 @@ public class Drawer {
 	}
 
 	public void draw(Canvas c) {
-		int w = lib.get(R.drawable.ventilation).getWidth();
-		Point p = new Point(0,0);
-		for(int i =0; i <9; i++){
-			drawPict(c, R.drawable.ventilation, p);
-			p.move(w + 10, 0);
-		}
-		p.move(-w - 10, w+10);
-		drawPict(c, R.drawable.ventilation, p);
-		p.move(0, w+10);
-		drawPict(c, R.drawable.ventilation, p);
-		p.move(0, w+10);
-		drawPict(c, R.drawable.ventilation, p);
-		p.move(0, w+10);
-		drawPict(c, R.drawable.ventilation, p);
 		
-		//drawTiles(c);
+		drawTiles(c);
 		switch (engine.getTimeline()) {
 		case ROLL_DICES:
 			drawDicesButton(c);
@@ -60,7 +47,7 @@ public class Drawer {
 	}
 
 	private void drawTiles(Canvas c) {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < Cnst.TILES_COUNT; i++) {
 			drawPict(c, engine.getTile(i).getDrawId(), DrawAreas.TILES[i]);
 		}
 	}

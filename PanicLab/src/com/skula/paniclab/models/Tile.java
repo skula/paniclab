@@ -3,6 +3,7 @@ package com.skula.paniclab.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.skula.paniclab.R;
 import com.skula.paniclab.constants.Cnst;
 
 public class Tile {
@@ -13,8 +14,7 @@ public class Tile {
 	private int pattern;
 	private int mutation;
 
-	public Tile(int drawId, int type, int shape, int color, int pattern,
-			int mutation) {
+	public Tile(int drawId, int type, int shape, int color, int pattern, int mutation) {
 		this.drawId = drawId;
 		this.type = type;
 		this.shape = shape;
@@ -30,73 +30,66 @@ public class Tile {
 	public static List<Tile> getTiles() {
 		List<Tile> tmp = new ArrayList<Tile>();
 		// ventilations
-		tmp.add(new Tile(0, Cnst.TILE_VENTILATION, Cnst.VOID, Cnst.VOID,
-				Cnst.VOID, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_VENTILATION, Cnst.VOID, Cnst.VOID,
-				Cnst.VOID, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_VENTILATION, Cnst.VOID, Cnst.VOID,
-				Cnst.VOID, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.ventilation, Cnst.TILE_VENTILATION, Cnst.VOID, Cnst.VOID, Cnst.VOID, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.ventilation, Cnst.TILE_VENTILATION, Cnst.VOID, Cnst.VOID, Cnst.VOID, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.ventilation, Cnst.TILE_VENTILATION, Cnst.VOID, Cnst.VOID, Cnst.VOID, Cnst.VOID));
 		// labos
-		tmp.add(new Tile(0, Cnst.TILE_LAB, Cnst.VOID, Cnst.LAB_BLUE, Cnst.VOID,
-				Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_LAB, Cnst.VOID, Cnst.LAB_RED, Cnst.VOID,
-				Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_LAB, Cnst.VOID, Cnst.LAB_YELLOW,
-				Cnst.VOID, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.lab_blue, Cnst.TILE_LAB, Cnst.VOID, Cnst.LAB_BLUE, Cnst.VOID, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.lab_red, Cnst.TILE_LAB, Cnst.VOID, Cnst.LAB_RED, Cnst.VOID, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.lab_yellow, Cnst.TILE_LAB, Cnst.VOID, Cnst.LAB_YELLOW, Cnst.VOID, Cnst.VOID));
 		// salles de mutation
-		tmp.add(new Tile(0, Cnst.TILE_MUTATION, Cnst.VOID, Cnst.VOID,
-				Cnst.VOID, Cnst.MUTATION_COLOR));
-		tmp.add(new Tile(0, Cnst.TILE_MUTATION, Cnst.VOID, Cnst.VOID,
-				Cnst.VOID, Cnst.MUTATION_PATTERN));
-		tmp.add(new Tile(0, Cnst.TILE_MUTATION, Cnst.VOID, Cnst.VOID,
-				Cnst.VOID, Cnst.MUTATION_SHAPE));
+		tmp.add(new Tile(R.drawable.mutation_color, Cnst.TILE_MUTATION, Cnst.VOID, Cnst.VOID, Cnst.VOID,
+				Cnst.MUTATION_COLOR));
+		tmp.add(new Tile(R.drawable.mutation_pattern, Cnst.TILE_MUTATION, Cnst.VOID, Cnst.VOID, Cnst.VOID,
+				Cnst.MUTATION_PATTERN));
+		tmp.add(new Tile(R.drawable.mutation_shape, Cnst.TILE_MUTATION, Cnst.VOID, Cnst.VOID, Cnst.VOID,
+				Cnst.MUTATION_SHAPE));
 		// amibes
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS,
-				Cnst.AMOEBA_BLUE, Cnst.AMOEBA_PEAS, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS,
-				Cnst.AMOEBA_BLUE, Cnst.AMOEBA_PEAS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.feelers_blue_peas, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS, Cnst.AMOEBA_BLUE,
+				Cnst.AMOEBA_PEAS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.feelers_blue_peas, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS, Cnst.AMOEBA_BLUE,
+				Cnst.AMOEBA_PEAS, Cnst.VOID));
 
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS,
-				Cnst.AMOEBA_BLUE, Cnst.AMOEBA_STRIPS, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS,
-				Cnst.AMOEBA_BLUE, Cnst.AMOEBA_STRIPS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.feelers_blue_strips, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS, Cnst.AMOEBA_BLUE,
+				Cnst.AMOEBA_STRIPS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.feelers_blue_strips, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS, Cnst.AMOEBA_BLUE,
+				Cnst.AMOEBA_STRIPS, Cnst.VOID));
 
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS,
-				Cnst.AMOEBA_ORANGE, Cnst.AMOEBA_PEAS, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS,
-				Cnst.AMOEBA_ORANGE, Cnst.AMOEBA_PEAS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.feelers_orange_peas, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS, Cnst.AMOEBA_ORANGE,
+				Cnst.AMOEBA_PEAS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.feelers_orange_peas, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS, Cnst.AMOEBA_ORANGE,
+				Cnst.AMOEBA_PEAS, Cnst.VOID));
 
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS,
+		tmp.add(new Tile(R.drawable.feelers_orange_strips, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS, Cnst.AMOEBA_ORANGE,
+				Cnst.AMOEBA_STRIPS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.feelers_orange_strips, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS, Cnst.AMOEBA_ORANGE,
+				Cnst.AMOEBA_STRIPS, Cnst.VOID));
+
+		tmp.add(new Tile(R.drawable.tentacles_blue_peas, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES, Cnst.AMOEBA_BLUE,
+				Cnst.AMOEBA_PEAS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.tentacles_blue_peas, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES, Cnst.AMOEBA_BLUE,
+				Cnst.AMOEBA_PEAS, Cnst.VOID));
+
+		tmp.add(new Tile(R.drawable.tentacles_blue_strips, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES, Cnst.AMOEBA_BLUE,
+				Cnst.AMOEBA_STRIPS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.tentacles_blue_strips, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES, Cnst.AMOEBA_BLUE,
+				Cnst.AMOEBA_STRIPS, Cnst.VOID));
+
+		tmp.add(new Tile(R.drawable.tentacles_orange_peas, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES, Cnst.AMOEBA_ORANGE,
+				Cnst.AMOEBA_PEAS, Cnst.VOID));
+		tmp.add(new Tile(R.drawable.tentacles_orange_peas, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES, Cnst.AMOEBA_ORANGE,
+				Cnst.AMOEBA_PEAS, Cnst.VOID));
+
+		tmp.add(new Tile(R.drawable.tentacles_orange_strips, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
 				Cnst.AMOEBA_ORANGE, Cnst.AMOEBA_STRIPS, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_FEELERS,
-				Cnst.AMOEBA_ORANGE, Cnst.AMOEBA_STRIPS, Cnst.VOID));
-
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
-				Cnst.AMOEBA_BLUE, Cnst.AMOEBA_PEAS, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
-				Cnst.AMOEBA_BLUE, Cnst.AMOEBA_PEAS, Cnst.VOID));
-
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
-				Cnst.AMOEBA_BLUE, Cnst.AMOEBA_STRIPS, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
-				Cnst.AMOEBA_BLUE, Cnst.AMOEBA_STRIPS, Cnst.VOID));
-
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
-				Cnst.AMOEBA_ORANGE, Cnst.AMOEBA_PEAS, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
-				Cnst.AMOEBA_ORANGE, Cnst.AMOEBA_PEAS, Cnst.VOID));
-
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
-				Cnst.AMOEBA_ORANGE, Cnst.AMOEBA_STRIPS, Cnst.VOID));
-		tmp.add(new Tile(0, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
+		tmp.add(new Tile(R.drawable.tentacles_orange_strips, Cnst.TILE_AMOEBA, Cnst.AMOEBA_TENTACLES,
 				Cnst.AMOEBA_ORANGE, Cnst.AMOEBA_STRIPS, Cnst.VOID));
 
 		return tmp;
 	}
 
 	public boolean matchs(int color, int shape, int pattern) {
-		return this.color == color && this.shape == shape
-				&& this.pattern == pattern;
+		return this.color == color && this.shape == shape && this.pattern == pattern;
 	}
 
 	public int getType() {

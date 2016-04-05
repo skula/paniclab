@@ -7,11 +7,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import com.skula.paniclab.R;
 import com.skula.paniclab.activities.views.BoardView;
 import com.skula.paniclab.constants.Cnst;
 import com.skula.paniclab.constants.DrawAreas;
 import com.skula.paniclab.constants.PictureLibrary;
+import com.skula.paniclab.constants.TouchArea;
 import com.skula.paniclab.models.Point;
 
 public class Drawer {
@@ -71,6 +71,9 @@ public class Drawer {
 	private void drawTouchArea(Canvas c) {
 		paint.setColor(Color.RED);
 		paint.setStyle(Paint.Style.STROKE);
+		for (int i = 0; i < Cnst.TILES_COUNT; i++) {
+			c.drawRect(TouchArea.TILES[i], paint);
+		}
 	}
 
 	private void drawPict(Canvas c, int id, Point p) {

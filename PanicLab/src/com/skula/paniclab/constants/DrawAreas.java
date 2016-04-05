@@ -33,23 +33,12 @@ public class DrawAreas {
 		TILES[15] = new Point(TILES[14].getX() - TILE_SIZE - TILES_DX, TILES[14].getY());
 		TILES[16] = new Point(TILES[15].getX() - TILE_SIZE - TILES_DX, TILES[15].getY());
 		TILES[17] = new Point(TILES[16].getX() - TILE_SIZE - TILES_DX, TILES[16].getY());
-		TILES[18] = new Point(TILES[17].getX() - (TILE_SIZE + TILES_DX)*2, TILES[17].getY());
+		TILES[18] = new Point(TILES[17].getX() - (TILE_SIZE + TILES_DX) * 2, TILES[17].getY());
 		TILES[19] = new Point(TILES[18].getX() - TILE_SIZE - TILES_DX, TILES[18].getY());
 		TILES[20] = new Point(TILES[19].getX() - TILE_SIZE - TILES_DX, TILES[19].getY());
 		TILES[21] = new Point(TILES[20].getX() - TILE_SIZE - TILES_DX, TILES[20].getY());
 		TILES[22] = new Point(TILES[21].getX(), TILES[21].getY() - TILE_SIZE - TILES_DY);
 		TILES[23] = new Point(TILES[22].getX(), TILES[22].getY() - TILE_SIZE - TILES_DY);
 		TILES[24] = new Point(TILES[23].getX(), TILES[23].getY() - TILE_SIZE - TILES_DY);
-	}
-
-	public static int getTileId(int x, int y) {
-		Rect r = null;
-		for (int i = 1; i < 4; i++) {
-			r = new Rect(TILES[i].getX(), TILES[i].getY(), TILES[i].getX() + TILE_SIZE, TILES[i].getY() + TILE_SIZE);
-			if (r.contains(x, y)) {
-				return i;
-			}
-		}
-		return -1;
 	}
 }

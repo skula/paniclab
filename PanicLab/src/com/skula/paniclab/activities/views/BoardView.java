@@ -3,10 +3,12 @@ package com.skula.paniclab.activities.views;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.skula.paniclab.constants.TouchArea;
 import com.skula.paniclab.services.Drawer;
 import com.skula.paniclab.services.GameEngine;
 
@@ -15,7 +17,8 @@ public class BoardView extends View {
 	private Resources res;
 	private Drawer drawer;
 	private GameEngine ge;
-
+	private int tmpTile;
+	
 	public BoardView(Context context) {
 		super(context);
 		this.paint = new Paint();
@@ -31,6 +34,7 @@ public class BoardView extends View {
 
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
+			tmpTile = TouchArea.getTileId(x, y);
 			break;
 		case MotionEvent.ACTION_MOVE:
 			break;
@@ -44,5 +48,9 @@ public class BoardView extends View {
 	@Override
 	public void draw(Canvas canvas) {
 		drawer.draw(canvas);
+		Paint paint = new Paint();
+		paint.setColor(Color.YELLOW);
+		paint.setTextSize(30f);
+		canvas.drawText("" + tmpTile, 300, 300, paint);
 	}
 }

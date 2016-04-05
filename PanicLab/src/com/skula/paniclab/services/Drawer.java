@@ -28,18 +28,17 @@ public class Drawer {
 	}
 
 	public void draw(Canvas c) {
-		
 		drawTiles(c);
 		switch (engine.getTimeline()) {
 		case ROLL_DICES:
 			drawDicesButton(c);
 			break;
 		case SELECT_TILE:
-			drawDices(c);
+			 drawDices(c);
 			break;
 		case TAKE_POINT:
-			drawDices(c);
-			drawPointsButton(c);
+			// drawDices(c);
+			// drawPointsButton(c);
 			break;
 		}
 		drawScore(c);
@@ -53,19 +52,72 @@ public class Drawer {
 	}
 
 	private void drawDicesButton(Canvas c) {
-
+		paint.setColor(Color.WHITE);
+		paint.setTextSize(40f);
+		c.drawText("Lancer !", DrawAreas.ROLL_DICES_BTN.getX() + 20, DrawAreas.ROLL_DICES_BTN.getY() + 125, paint);
 	}
 
+	// TODO: a faire avec les images
 	private void drawDices(Canvas c) {
+		paint.setColor(Color.WHITE);
+		paint.setTextSize(40f);
 
+		int x0 = 800;
+		int y0 = 500;
+		int dy = 50;
+
+		String tmp = "";
+		switch (engine.getDiceLab()) {
+		case Cnst.LAB_BLUE:
+			tmp = "Labo: bleu ("
+					+ (engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? "sens horaire)" : "sens inverse)");
+			break;
+		case Cnst.LAB_RED:
+			tmp = "Labo: rouge ("
+					+ (engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? "sens horaire)" : "sens inverse)");
+			break;
+		case Cnst.LAB_YELLOW:
+			tmp = "Labo: jaune ("
+					+ (engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? "sens horaire)" : "sens inverse)");
+			break;
+		}
+		c.drawText(tmp, x0, y0, paint);
+		y0 += dy;
+
+		tmp = "Couleur: " + (engine.getDiceColor() == Cnst.AMOEBA_ORANGE ? "orange" : "bleue");
+		c.drawText(tmp, x0, y0, paint);
+		y0 += dy;
+
+		tmp = "Forme: " + (engine.getDiceShape() == Cnst.AMOEBA_TENTACLES ? "tentacules" : "antenes");
+		c.drawText(tmp, x0, y0, paint);
+		y0 += dy;
+
+		tmp = "Motif: " + (engine.getDicePattern() == Cnst.AMOEBA_PEAS ? "poids" : "rayures");
+		c.drawText(tmp, x0, y0, paint);
 	}
 
 	private void drawScore(Canvas c) {
-
+		paint.setColor(Color.BLUE);
+		for (int i = 0; i < engine.getnPlayers(); i++) {
+			c.drawText(engine.getScores()[i] + "", i % 2 == 0 ? DrawAreas.POINT_BTNS[i].getX() + 100
+					: DrawAreas.POINT_BTNS[i].getX() - 100, DrawAreas.POINT_BTNS[i].getY(), paint);
+		}
 	}
 
+	// TODO: faire avec les images
 	private void drawPointsButton(Canvas c) {
+		String txt = "";
+		if (engine.isGoodTile()) {
+			paint.setColor(Color.GREEN);
+			txt = "+1";
+		} else {
+			paint.setColor(Color.GREEN);
+			txt = "-1";
+		}
 
+		for (int i = 0; i < engine.getnPlayers(); i++) {
+			c.drawText(txt, DrawAreas.POINT_BTNS[i].getX(), DrawAreas.POINT_BTNS[i].getY(), paint);
+		}
 	}
 
 	private void drawTouchArea(Canvas c) {
@@ -74,6 +126,14 @@ public class Drawer {
 		for (int i = 0; i < Cnst.TILES_COUNT; i++) {
 			c.drawRect(TouchArea.TILES[i], paint);
 		}
+
+		paint.setColor(Color.GREEN);
+		for (int i = 0; i < 4; i++) {
+			c.drawRect(TouchArea.POINT_BTNS[i], paint);
+		}
+
+		paint.setColor(Color.YELLOW);
+		c.drawRect(TouchArea.ROLL_DICES_BTN, paint);
 	}
 
 	private void drawPict(Canvas c, int id, Point p) {

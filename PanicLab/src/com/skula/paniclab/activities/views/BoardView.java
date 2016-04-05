@@ -22,7 +22,7 @@ public class BoardView extends View {
 	public BoardView(Context context) {
 		super(context);
 		this.paint = new Paint();
-		this.ge = new GameEngine(2);
+		this.ge = new GameEngine(4);
 		this.res = context.getResources();
 		this.drawer = new Drawer(this, ge);
 	}
@@ -34,7 +34,25 @@ public class BoardView extends View {
 
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			tmpTile = TouchArea.getTileId(x, y);
+			switch(ge.getTimeline()){
+			case ROLL_DICES:
+				if(TouchArea.ROLL_DICES_BTN.contains(x, y)){
+					ge.process(0);
+				}
+				break;
+			case SELECT_TILE:
+				tmpTile = TouchArea.getTileId(x, y);
+				if(tmpTile!=-1){
+					ge.process(tmpTile);
+				}
+				break;
+			case TAKE_POINT:
+				int pId = TouchArea.getPointBtnId(x, y, ge.getnPlayers());
+				if(pId != -1){
+					ge.process(pId);
+				}
+				break;
+			}
 			break;
 		case MotionEvent.ACTION_MOVE:
 			break;
@@ -50,7 +68,7 @@ public class BoardView extends View {
 		drawer.draw(canvas);
 		Paint paint = new Paint();
 		paint.setColor(Color.YELLOW);
-		paint.setTextSize(30f);
-		canvas.drawText("" + tmpTile, 300, 300, paint);
+		paint.setTextSize(50f);
+		canvas.drawText("" + tmpTile, 900, 100, paint);
 	}
 }

@@ -10,8 +10,14 @@ public class DrawAreas {
 	public static final int TILE_SIZE = 200;
 	public static final int TILES_DX = 10;
 	public static final int TILES_DY = 10;
-
 	public static final Point[] TILES;
+
+	public static final Point[] POINT_BTNS;
+
+
+	public static final int POINT_BTN_SIZE = 100;
+	public static final Point POINT_P1_BTN = new Point(300, 300);
+
 	static {
 		TILES = new Point[Cnst.TILES_COUNT];
 		TILES[0] = P0;
@@ -40,5 +46,15 @@ public class DrawAreas {
 		TILES[22] = new Point(TILES[21].getX(), TILES[21].getY() - TILE_SIZE - TILES_DY);
 		TILES[23] = new Point(TILES[22].getX(), TILES[22].getY() - TILE_SIZE - TILES_DY);
 		TILES[24] = new Point(TILES[23].getX(), TILES[23].getY() - TILE_SIZE - TILES_DY);
+
+		POINT_BTNS = new Point[4];
+		POINT_BTNS[0] = new Point(TILES[24].getX() + TILE_SIZE + TILES_DX * 4, TILES[24].getY() + TILES_DY * 3);
+		POINT_BTNS[1] = new Point(TILES[11].getX() - POINT_BTN_SIZE - TILES_DX * 4, TILES[11].getY() + TILES_DY * 3);
+		POINT_BTNS[2] = new Point(TILES[13].getX() - POINT_BTN_SIZE - TILES_DX * 4, TILES[14].getY() - POINT_BTN_SIZE
+				- TILES_DY * 4);
+		POINT_BTNS[3] = new Point(TILES[20].getX() + TILES_DX * 3, TILES[20].getY() - POINT_BTN_SIZE - TILES_DY * 4);
 	}
+
+	public static final int ROLL_DICES_BTN_SIZE = TILE_SIZE;
+	public static final Point ROLL_DICES_BTN = new Point(TILES[18].getX() + ROLL_DICES_BTN_SIZE + TILES_DX, TILES[18].getY());
 }

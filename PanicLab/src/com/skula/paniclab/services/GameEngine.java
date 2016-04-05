@@ -61,6 +61,11 @@ public class GameEngine {
 			break;
 		case TAKE_POINT:
 			timeline = Timeline.ROLL_DICES;
+			if(userSelTile == responseTile){
+				scores[areaId]++;
+			}else{
+				scores[areaId] = scores[areaId] ==0?0: scores[areaId]-1;
+			}
 			break;
 		}
 	}
@@ -141,6 +146,10 @@ public class GameEngine {
 		}
 	}
 
+	public boolean isGoodTile(){
+		return userSelTile == responseTile;
+	}
+	
 	public void calculResponse() {
 		// trouver le labo de départ
 		int curTile = getStartLab();

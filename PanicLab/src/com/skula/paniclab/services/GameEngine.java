@@ -27,7 +27,6 @@ public class GameEngine {
 	public GameEngine(int nPlayers) {
 		this.nPlayers = nPlayers;
 		this.scores = new int[nPlayers];
-		scores[0] = 99;
 		List<Tile> tmp = Tile.getTiles();
 		Collections.shuffle(tmp);
 

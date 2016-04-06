@@ -57,7 +57,7 @@ public class Drawer {
 			break;
 		}
 		drawScore(c);
-		drawTouchArea(c);
+		//drawTouchArea(c);
 	}
 
 	private void drawTiles(Canvas c) {

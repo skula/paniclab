@@ -14,7 +14,7 @@ public class DrawAreas {
 
 	public static final Point[] POINT_BTNS;
 
-	public static final int POINT_BTN_SIZE = 100;
+	public static final int POINT_BTN_SIZE = 133;
 	public static final Point POINT_P1_BTN = new Point(300, 300);
 
 	public static final Point DICES = new Point(665, 500);

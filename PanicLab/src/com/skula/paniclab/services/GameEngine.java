@@ -24,19 +24,10 @@ public class GameEngine {
 
 	private Timeline timeline;
 
-	public static void main(String[] args) {
-		GameEngine ge = new GameEngine(2);
-		ge.displayTiles();
-		ge.rollDices();
-		ge.displayDices();
-		ge.calculResponse();
-		ge.displayResponse();
-	}
-
 	public GameEngine(int nPlayers) {
 		this.nPlayers = nPlayers;
 		this.scores = new int[nPlayers];
-
+		scores[0] = 99;
 		List<Tile> tmp = Tile.getTiles();
 		Collections.shuffle(tmp);
 
@@ -351,5 +342,13 @@ public class GameEngine {
 
 	public Tile getTile(int i) {
 		return tiles[i];
+	}
+
+	public int getUserSelTile() {
+		return userSelTile;
+	}
+
+	public void setUserSelTile(int userSelTile) {
+		this.userSelTile = userSelTile;
 	}
 }

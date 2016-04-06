@@ -49,6 +49,16 @@ public class PictureLibrary {
 		this.map.put(R.drawable.dice_lab_red_counterclockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_red_counterclockwise));
 		this.map.put(R.drawable.dice_lab_yellow_clockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_yellow_clockwise));
 		this.map.put(R.drawable.dice_lab_yellow_counterclockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_yellow_counterclockwise));
+
+		this.map.put(R.drawable.point_minus, BitmapFactory.decodeResource(res, R.drawable.point_minus));
+		this.map.put(R.drawable.point_plus, BitmapFactory.decodeResource(res, R.drawable.point_plus));
+
+		this.map.put(R.drawable.btn_roll, BitmapFactory.decodeResource(res, R.drawable.btn_roll));
+		
+
+		this.map.put(R.drawable.answer_found, BitmapFactory.decodeResource(res, R.drawable.answer_found));
+		this.map.put(R.drawable.answer_wrong, BitmapFactory.decodeResource(res, R.drawable.answer_wrong));
+		this.map.put(R.drawable.answer_right, BitmapFactory.decodeResource(res, R.drawable.answer_right));
 	}
 
 	public Bitmap get(int id) {

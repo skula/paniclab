@@ -67,9 +67,5 @@ public class BoardView extends View {
 	@Override
 	public void draw(Canvas canvas) {
 		drawer.draw(canvas);
-		Paint paint = new Paint();
-		paint.setColor(Color.YELLOW);
-		paint.setTextSize(50f);
-		canvas.drawText("" + tmpTile, 900, 100, paint);
 	}
 }

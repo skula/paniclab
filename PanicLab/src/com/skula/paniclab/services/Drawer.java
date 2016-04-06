@@ -25,7 +25,10 @@ public class Drawer {
 	private Paint paint;
 	private AssetManager assetManager;
 	private GameEngine engine;
-	
+
+	private int measuredWidth;
+	private int measuredHeight;
+
 	private List<Integer> dicesOrder;
 
 	public Drawer(BoardView view, GameEngine engine) {
@@ -34,6 +37,8 @@ public class Drawer {
 		this.assetManager = view.getResources().getAssets();
 		this.lib = new PictureLibrary(view.getResources());
 		this.dicesOrder = new ArrayList<Integer>();
+		this.measuredWidth = view.getMeasuredWidth();
+		this.measuredHeight = view.getMeasuredHeight();
 	}
 
 	public void draw(Canvas c) {
@@ -52,48 +57,72 @@ public class Drawer {
 			break;
 		}
 		drawScore(c);
-		//drawTouchArea(c);
+		drawTouchArea(c);
 	}
-	
+
 	private void drawTiles(Canvas c) {
+		int cx = measuredWidth / 2;
+		int cy = measuredHeight / 2;
 		for (int i = 0; i < Cnst.TILES_COUNT; i++) {
-			drawPict(c, engine.getTile(i).getDrawId(), DrawAreas.TILES[i]);
+			if (i >= 14 && i <= 21) {
+				c.save();
+				c.rotate(180, DrawAreas.TILES[i].getX(), DrawAreas.TILES[i].getY());
+				drawPict(c, engine.getTile(i).getDrawId(), new Point(DrawAreas.TILES[i].getX() + cx
+						- DrawAreas.TILE_SIZE, DrawAreas.TILES[i].getY() + cy - DrawAreas.TILE_SIZE));
+				c.restore();
+			} else if (i >= 11 && i <= 13) {
+				c.save();
+				c.rotate(90, DrawAreas.TILES[i].getX(), DrawAreas.TILES[i].getY());
+				drawPict(c, engine.getTile(i).getDrawId(), new Point(DrawAreas.TILES[i].getX() + cx, DrawAreas.TILES[i].getY() + cy - DrawAreas.TILE_SIZE));
+				c.restore();
+			}else if (i >= 22 && i <= 24) {
+				c.save();
+				c.rotate(-90, DrawAreas.TILES[i].getX(), DrawAreas.TILES[i].getY());
+				drawPict(c, engine.getTile(i).getDrawId(), new Point(DrawAreas.TILES[i].getX() + cx - DrawAreas.TILE_SIZE, DrawAreas.TILES[i].getY() + cy ));
+				c.restore();
+			}else{
+				drawPict(c, engine.getTile(i).getDrawId(), DrawAreas.TILES[i]);
+			}
 		}
 	}
 
-	public void shuffleDicesOrder(){
+	public void shuffleDicesOrder() {
 		dicesOrder.clear();
-		for(int i=0; i<Cnst.DICES_COUNT; i++){
+		for (int i = 0; i < Cnst.DICES_COUNT; i++) {
 			dicesOrder.add(i);
 		}
 		Collections.shuffle(dicesOrder);
 	}
-	
+
 	private void drawDicesButton(Canvas c) {
 		drawPict(c, R.drawable.btn_roll, DrawAreas.ROLL_DICES_BTN);
 	}
 
 	// TODO: a faire avec les images
-	private void drawDices(Canvas c) {		
-		int diceColorId = engine.getDiceColor() == Cnst.AMOEBA_ORANGE? R.drawable.dice_orange:R.drawable.dice_blue;
-		int diceShapeId = engine.getDiceShape() == Cnst.AMOEBA_TENTACLES? R.drawable.dice_tentacles:R.drawable.dice_feelers;
-		int dicePatternId = engine.getDicePattern() == Cnst.AMOEBA_PEAS? R.drawable.dice_peas:R.drawable.dice_strips;
+	private void drawDices(Canvas c) {
+		int diceColorId = engine.getDiceColor() == Cnst.AMOEBA_ORANGE ? R.drawable.dice_orange : R.drawable.dice_blue;
+		int diceShapeId = engine.getDiceShape() == Cnst.AMOEBA_TENTACLES ? R.drawable.dice_tentacles
+				: R.drawable.dice_feelers;
+		int dicePatternId = engine.getDicePattern() == Cnst.AMOEBA_PEAS ? R.drawable.dice_peas : R.drawable.dice_strips;
 		int diceLabId = 0;
 		switch (engine.getDiceLab()) {
 		case Cnst.LAB_BLUE:
-			diceLabId = engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? R.drawable.dice_lab_blue_clockwise:R.drawable.dice_lab_blue_counterclockwise;
+			diceLabId = engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? R.drawable.dice_lab_blue_clockwise
+					: R.drawable.dice_lab_blue_counterclockwise;
 			break;
 		case Cnst.LAB_RED:
-			diceLabId = engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? R.drawable.dice_lab_red_clockwise:R.drawable.dice_lab_red_counterclockwise;
+			diceLabId = engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? R.drawable.dice_lab_red_clockwise
+					: R.drawable.dice_lab_red_counterclockwise;
 			break;
 		case Cnst.LAB_YELLOW:
-			diceLabId = engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? R.drawable.dice_lab_yellow_clockwise:R.drawable.dice_lab_yellow_counterclockwise;
+			diceLabId = engine.getDiceDirection() == Cnst.DICE_CLOCKWISE ? R.drawable.dice_lab_yellow_clockwise
+					: R.drawable.dice_lab_yellow_counterclockwise;
 			break;
 		}
-		
+
 		Point p = new Point(DrawAreas.DICES.getX(), DrawAreas.DICES.getY());
-		for(Integer i : dicesOrder){
-			switch(i){
+		for (Integer i : dicesOrder) {
+			switch (i) {
 			case 0:
 				drawPict(c, diceColorId, p);
 				break;
@@ -117,11 +146,13 @@ public class Drawer {
 		Typeface plain = Typeface.createFromAsset(assetManager, "fonts/OCRASTD.OTF");
 		paint.setTypeface(plain);
 		for (int i = 0; i < engine.getnPlayers(); i++) {
-			if(i==1 || i==2){
-				c.drawText(engine.getScores()[i] + " pts", DrawAreas.POINT_BTNS[i].getX() - 165, DrawAreas.POINT_BTNS[i].getY() +75, paint);
-			}else{
-				c.drawText(engine.getScores()[i] + " pts", DrawAreas.POINT_BTNS[i].getX() + 175, DrawAreas.POINT_BTNS[i].getY()+75, paint);
-			} 
+			if (i == 1 || i == 2) {
+				c.drawText(engine.getScores()[i] + " pts", DrawAreas.POINT_BTNS[i].getX() - 165,
+						DrawAreas.POINT_BTNS[i].getY() + 75, paint);
+			} else {
+				c.drawText(engine.getScores()[i] + " pts", DrawAreas.POINT_BTNS[i].getX() + 175,
+						DrawAreas.POINT_BTNS[i].getY() + 75, paint);
+			}
 		}
 	}
 

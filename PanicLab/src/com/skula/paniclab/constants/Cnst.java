@@ -2,6 +2,7 @@ package com.skula.paniclab.constants;
 
 public class Cnst {
 	public static final int TILES_COUNT = 25;
+	public static final int DICES_COUNT = 4;
 	
 	public static final int VOID = -1;
 	

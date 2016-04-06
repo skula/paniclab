@@ -36,6 +36,19 @@ public class PictureLibrary {
 		this.map.put(R.drawable.feelers_blue_strips, BitmapFactory.decodeResource(res, R.drawable.feelers_blue_strips));
 		this.map.put(R.drawable.feelers_orange_peas, BitmapFactory.decodeResource(res, R.drawable.feelers_orange_peas));
 		this.map.put(R.drawable.feelers_orange_strips, BitmapFactory.decodeResource(res, R.drawable.feelers_orange_strips));
+		
+		this.map.put(R.drawable.dice_orange, BitmapFactory.decodeResource(res, R.drawable.dice_orange));
+		this.map.put(R.drawable.dice_blue, BitmapFactory.decodeResource(res, R.drawable.dice_blue));
+		this.map.put(R.drawable.dice_tentacles, BitmapFactory.decodeResource(res, R.drawable.dice_tentacles));
+		this.map.put(R.drawable.dice_feelers, BitmapFactory.decodeResource(res, R.drawable.dice_feelers));
+		this.map.put(R.drawable.dice_peas, BitmapFactory.decodeResource(res, R.drawable.dice_peas));
+		this.map.put(R.drawable.dice_strips, BitmapFactory.decodeResource(res, R.drawable.dice_strips));
+		this.map.put(R.drawable.dice_lab_blue_clockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_blue_clockwise));
+		this.map.put(R.drawable.dice_lab_blue_counterclockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_blue_counterclockwise));
+		this.map.put(R.drawable.dice_lab_red_clockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_red_clockwise));
+		this.map.put(R.drawable.dice_lab_red_counterclockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_red_counterclockwise));
+		this.map.put(R.drawable.dice_lab_yellow_clockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_yellow_clockwise));
+		this.map.put(R.drawable.dice_lab_yellow_counterclockwise, BitmapFactory.decodeResource(res, R.drawable.dice_lab_yellow_counterclockwise));
 	}
 
 	public Bitmap get(int id) {

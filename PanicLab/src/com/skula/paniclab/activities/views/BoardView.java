@@ -38,6 +38,7 @@ public class BoardView extends View {
 			case ROLL_DICES:
 				if(TouchArea.ROLL_DICES_BTN.contains(x, y)){
 					ge.process(0);
+					drawer.shuffleDicesOrder();
 				}
 				break;
 			case SELECT_TILE:
@@ -53,13 +54,13 @@ public class BoardView extends View {
 				}
 				break;
 			}
+			invalidate();
 			break;
 		case MotionEvent.ACTION_MOVE:
 			break;
 		case MotionEvent.ACTION_UP:
 			break;
 		}
-		invalidate();
 		return true;
 	}
 

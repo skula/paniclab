@@ -14,10 +14,12 @@ public class DrawAreas {
 
 	public static final Point[] POINT_BTNS;
 
-
 	public static final int POINT_BTN_SIZE = 100;
 	public static final Point POINT_P1_BTN = new Point(300, 300);
 
+	public static final Point DICES = new Point(665, 500);
+	public static final int DICES_DX = 150;
+	
 	static {
 		TILES = new Point[Cnst.TILES_COUNT];
 		TILES[0] = P0;
